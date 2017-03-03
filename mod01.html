@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head lang="en">
+  <meta charset="utf-8">
+  <title>ES6 Varialble Types</title>
+</head>
+<body>
+Check console...
+
+<script>
+function setWidth() {
+  var width = 100;
+  console.log(width); // good inside function...
+}
+setWidth();
+// console.log(width); // not good outside function...
+
+var age = 100;
+if(age > 12) {
+  let dogYears = age * 7; // var "leaks" from blocks, can also use const to maintain scope
+  console.log(`You are ${dogYears} dog years old.`);
+}
+
+// day 2 or 3?
+const key = 'abc123'; //cannot update
+let points = 50;      // can be updated
+let winner = false;
+
+if(points > 40) {
+  let winner = true;
+  // this winner is only scoped to block, not the same variable as the previous "winner"
+}
+
+const person = {
+  name: 'Wes',
+  age: 28
+  // person cannot be changed, but properties can be changed
+  // to prevent properties from being changed...use Object.freeze
+}
+
+const wes = Object.freeze(person); // this prevents person from having properties changed
+
+</script>
+</body>
+</html>
