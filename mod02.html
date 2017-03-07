@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<head lang="en">
+  <meta charset="utf-8">
+  <title>Arrow Functions</title>
+  <style>
+    .wrap {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+      font-weight: 100;
+      color: white;
+    }
+
+    .box {
+      background: black url(https://unsplash.it/1500/1500?image=560&blur=0.5) center fixed no-repeat;;
+      width: 50px;
+      height: 50px;
+      padding: 50px;
+      transition: width 0.2s, height 0.6s;
+      position: relative;
+    }
+
+    .box.opening {
+      width: 500px;
+      height: 500px;
+    }
+
+    .box p {
+      position: absolute;
+      width: 100%;
+      transform: translateX(-200%);
+      transition: all 0.5s;
+      bottom: 0;
+    }
+
+    .box h2 {
+      position: absolute;
+      width: 100%;
+      font-size: 100px;
+      transform: translateX(200%);
+      transition: all 0.5s;
+      top: 0;
+    }
+
+    .box.open > * {
+      transform: translateX(0%);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="box">
+      <h2>Wes Bos</h2>
+      <p class="social">@wesbos</p>
+    </div>
+  </div>
+  <script>
+    const names = ['karen', 'becky', 'johnathan', 'chris', 'william'];
+
+    const fullnames = names.map(function(name) {
+      return `${name} bos`;
+    });
+
+    const fullnames2 = names.map((name) => {
+      return `${name} bos`;
+    });
+
+    const fullnames3 = names.map(name => {
+      return `${name} bos`;
+    });
+
+    const fullnames4 = names.map(name => `${name} bos`);
+
+    const sampleName = names.map(() => `cool bos`);
+
+    const sayMyName = (name) => {
+      alert(`Hello ${name}!`);
+    }
+
+    //sayMyName('Karen');
+
+    //PART 2
+    const race = '100m Dash';
+    const winners = ['Hunter Gath', 'Singa Song', 'Imda Bos'];
+
+    const win = winners.map((winner,i) => ({
+      name: winner,
+      race,
+      place: i + 1
+    }));
+
+    const ages = [12,23,34,45,56,67,78];
+
+    const old = ages.filter(age => age >=60);
+
+    // PART 3 (on screen!)
+    const box = document.querySelector('.box');
+    box.addEventListener('click', function() {
+      let first = 'opening';
+      let second = 'open';
+
+      if(this.classList.contains(first)) {
+        [first, second] = [second, first];
+      }
+
+      this.classList.toggle(first);
+      setTimeout(() => {
+        this.classList.toggle(second);
+      }, 500);
+    });
+  </script>
+</body>
+</html>
